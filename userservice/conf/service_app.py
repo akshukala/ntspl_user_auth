@@ -10,7 +10,7 @@ from userservice.conf.config_logger_setup import setup_config_logger
 from userservice.session.interfaces import DBInterface
 
 from userservice.service_apis.user_validation import UserValidation
-
+from userservice.service_apis.ping import Ping
 from userservice.service_apis.change_password import ChangePassword
 
 
@@ -31,7 +31,7 @@ api = restful.Api(app)
 setup_config_logger(app)
 
 app.logger.info("Setting up Resources")
-
+api.add_resource(Ping,'/trafficservice/ping/')
 api.add_resource(UserValidation, '/userservice/uservalidation/')
 api.add_resource(ChangePassword, '/userservice/changepassword/')
 app.logger.info("Resource setup done")
